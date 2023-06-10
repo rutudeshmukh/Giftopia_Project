@@ -26,3 +26,5 @@ Lombok
 mySQLWorkBench
 Mysql server
 postman
+Pagination template: https://ng-bootstrap.github.io/
+
