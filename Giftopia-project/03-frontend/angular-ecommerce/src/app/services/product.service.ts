@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { Product } from '../common/product';
-import { Observable, map } from 'rxjs';
+import { Observable} from 'rxjs';
+import { map } from 'rxjs/operators';
 import { ProductCategory } from '../common/product-category';
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
   
-
   private baseUrl = 'http://localhost:8080/api/products';
 
   private categoryUrl = 'http://localhost:8080/api/product-category';
@@ -16,11 +16,11 @@ export class ProductService {
   constructor(private httpClient : HttpClient) { }
   
   getProduct(theProductId: number) : Observable<Product>{
+ 
     //need to build URL based on product id
-  const productUrl =`${this.baseUrl}/${theProductId}`;
+    const productUrl =`${this.baseUrl}/${theProductId}`;
 
-  return this.httpClient.get<Product>(productUrl);
-  
+    return this.httpClient.get<Product>(productUrl);
   }
 
   getProductListPaginate(thePage:number,
@@ -40,9 +40,7 @@ export class ProductService {
     const searchUrl=`${this.baseUrl}/search/findByCategoryId?id=${theCategoryId}`;
 
     //check below line if found different output
-    return this.httpClient.get<GetResponseProducts>(searchUrl).pipe(
-      map(response=>response._embedded.products)
-    );
+    return this.getProducts(searchUrl);
   }
 
   searchProducts(theKeyword: string): Observable<Product[]> {
@@ -53,15 +51,14 @@ export class ProductService {
   }
 
   private getProducts(searchUrl: string): Observable<Product[]> {
-    return this.httpClient.get<GetResponseProducts>(searchUrl).pipe(
-      map(response => response._embedded.products)
-    );
+    return this.httpClient.get<GetResponseProducts>(searchUrl).pipe
+    (map(response => response._embedded.products));
   }
 
   getProductCategories():Observable<ProductCategory[]> {
     return this.httpClient.get<GetResponseProductCategory>(this.categoryUrl).pipe(
       map(response=> response._embedded.productCategory)
-    )
+    );
   }
 }
 

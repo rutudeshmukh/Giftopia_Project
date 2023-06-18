@@ -13,12 +13,12 @@ import { ProductService } from 'src/app/services/product.service';
 export class ProductListComponent implements OnInit {
   products: Product[] = [];
   currentCategoryId: number = 1;
-  searchMode: boolean = false;
   previousCategoryId: number = 1;
+  searchMode: boolean = false;
 
   //new properties for pagination
   thePageNumber: number =1;
-  thePageSize: number = 10;
+  thePageSize: number = 50;
   theTotalElements: number = 0;
 
 
@@ -66,17 +66,17 @@ export class ProductListComponent implements OnInit {
     } else {
       // not category id available  ..default to category id 1
       this.currentCategoryId = 1;
-    }
+    } 
 
     //check if we have a different category than previous
     //Note: Angular will reuse a component if it is currently being viewed
 
-    //if we have a different category id than previos
-    //the set thePageNumber back to 1
-    if(this.previousCategoryId!= this.currentCategoryId){
-      this.thePageNumber=1;
+    //if we have a different category id than previous
+    //then set thePageNumber back to 1
+    if(this.previousCategoryId != this.currentCategoryId){
+      this.thePageNumber = 1;
     }
-
+ 
     this.previousCategoryId = this.currentCategoryId;
 
     console.log(`currentCategoryId=${this.currentCategoryId},thePageNumber=${this.thePageNumber}`);
@@ -84,7 +84,7 @@ export class ProductListComponent implements OnInit {
     
     //now get the products for the given category Id
     
-    this.productService.getProductListPaginate(this.thePageNumber =1,
+    this.productService.getProductListPaginate(this.thePageNumber - 1,
                                                this.thePageSize,
                                                this.currentCategoryId)
                                                .subscribe(
@@ -93,7 +93,8 @@ export class ProductListComponent implements OnInit {
                                                     this.thePageNumber =data.page.number + 1; // spring Data REST: Pages are 0 based
                                                     this.thePageSize = data.page.size;
                                                     this.theTotalElements = data.page.totalElements;
-                                                });
+                                                }
+                                               );
     // this.productService
     //   .getProductList(this.currentCategoryId)
     //   .subscribe((data) => {
