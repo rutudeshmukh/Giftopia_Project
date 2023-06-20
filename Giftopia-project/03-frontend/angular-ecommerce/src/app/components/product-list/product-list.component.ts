@@ -18,9 +18,11 @@ export class ProductListComponent implements OnInit {
 
   //new properties for pagination
   thePageNumber: number =1;
-  thePageSize: number = 50;
+  thePageSize: number = 5;
   theTotalElements: number = 0;
 
+
+  previousKeyword : string= "";
 
   constructor(
     private productService: ProductService,
@@ -47,13 +49,21 @@ export class ProductListComponent implements OnInit {
 
     const theKeyword: string =this.route.snapshot.paramMap.get('keyword')!;
 
+    //if we have a different keyword than previous 
+    //then set thePageNumber to 1
+
+    if(this.previousKeyword != theKeyword){
+      this.thePageNumber = 1;
+    }
+
+    this.previousKeyword = theKeyword;
+
+    console.log(`keyword=${theKeyword},thePageNumber=${this.thePageNumber}`);
+
     //now search for the products using keyword
-    this.productService.searchProducts(theKeyword).subscribe(
-      // data=>{  original video line
-      (      data: Product[]) => {
-        this.products =data;
-      }
-    );
+    this.productService.searchProductsPaginate(this.thePageNumber-1,
+                                               this.thePageSize,
+                                               theKeyword).subscribe(this.processResult());
   }
 
   handleListProducts() {
@@ -87,18 +97,27 @@ export class ProductListComponent implements OnInit {
     this.productService.getProductListPaginate(this.thePageNumber - 1,
                                                this.thePageSize,
                                                this.currentCategoryId)
-                                               .subscribe(
-                                                data=> {
-                                                    this.products = data._embedded.products;
-                                                    this.thePageNumber =data.page.number + 1; // spring Data REST: Pages are 0 based
-                                                    this.thePageSize = data.page.size;
-                                                    this.theTotalElements = data.page.totalElements;
-                                                }
-                                               );
+                                               .subscribe(this.processResult());
     // this.productService
     //   .getProductList(this.currentCategoryId)
     //   .subscribe((data) => {
     //     this.products = data;
     //   });
   }
+
+  updatePageSize(pageSize: string){
+    this.thePageSize= +pageSize; //convert string to number using + operator
+    this.thePageNumber=1;
+    this.listProducts();
+  }
+
+  processResult(){
+    return (data:any)=>{
+      this.products = data._embedded.products;
+      this.thePageNumber = data.page.number + 1;
+      this.thePageSize = data.page.size;
+      this.theTotalElements = data.page.totalElements;
+    };
+  }
+
 }
