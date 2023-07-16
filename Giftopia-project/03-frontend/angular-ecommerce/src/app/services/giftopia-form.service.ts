@@ -1,12 +1,37 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs'; //rxjs = reactive javascript
+import { Country } from '../common/country';
+import { map } from 'rxjs/operators';
+import { State } from '../common/state';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GiftopiaFormService {
 
-  constructor() { }
+  private countriesUrl = 'http://localhost:8080/api/countries';
+  private statesUrl = 'http://localhost:8080/api/states';
+  
+  constructor(private httpClient: HttpClient) { }
+
+  getCountries():  Observable<Country[]>{
+
+    return this.httpClient.get<GetResponseCountries>(this.countriesUrl).pipe(
+      map(response => response._embedded.countries)
+    );
+  }
+
+  getStates(theCountryCode: string): Observable<State[]>{
+
+    //search url
+    const searchStatesUrl = `${this.statesUrl}/search/findByCountryCode?code=${theCountryCode}`;
+
+    return this.httpClient.get<GetResponseStates>(searchStatesUrl).pipe(
+      map(Response=>Response._embedded.states)
+    );
+
+  }
 
   getCreditCardMonths(startMonth:number): Observable<number[]>{
    
@@ -35,5 +60,17 @@ export class GiftopiaFormService {
       data.push(theYear);
     }
     return of(data);
+  }
+}
+
+interface GetResponseCountries{
+  _embedded:{
+    countries: Country[];
+  }
+}
+
+interface GetResponseStates{
+  _embedded:{
+    states: State[];
   }
 }
