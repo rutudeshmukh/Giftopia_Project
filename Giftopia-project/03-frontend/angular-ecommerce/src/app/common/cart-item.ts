@@ -2,7 +2,7 @@ import { Product } from "./product";
 
 export class CartItem {
 
-    id: number; // change to number from string type (for error fix) - RD
+    id: string; 
     name : string ;
     imageUrl: string;
     unitPrice: number;
