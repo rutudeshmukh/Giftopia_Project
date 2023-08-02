@@ -4,9 +4,9 @@ GRANT ALL PRIVILEGES ON * . * TO 'ecommerceapp'@'localhost';
 
 #
 # Starting with MySQL 8.0.4, the MySQL team changed the 
-# default authentication plugin for MySQL server 
+# default authenticatproductproduction plugin for MySQL server 
 # from mysql_native_password to caching_sha2_password.
-#
+#address
 # The command below will make the approprisate updates for your user account.
 #
 # See the MySQL Reference Manual for details: 
