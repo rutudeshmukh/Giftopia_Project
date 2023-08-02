@@ -1,9 +1,6 @@
 package com.giftopia.ecommerce.config;
 
-import com.giftopia.ecommerce.entity.Country;
-import com.giftopia.ecommerce.entity.Product;
-import com.giftopia.ecommerce.entity.ProductCategory;
-import com.giftopia.ecommerce.entity.State;
+import com.giftopia.ecommerce.entity.*;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.metamodel.EntityType;
 //import org.hibernate.type.EntityType;
@@ -43,8 +40,9 @@ public class MyDataRestConfig implements RepositoryRestConfigurer {
         disableHttpMethods(ProductCategory.class,config, theUnsupportedActions);
         disableHttpMethods(Country.class,config, theUnsupportedActions);
         disableHttpMethods(State.class,config, theUnsupportedActions);
+        disableHttpMethods(Order.class,config, theUnsupportedActions);
 
-        //call an internal helper menthod
+        //call an internal helper method
         exposeIds(config);
 
         //configure cors mapping
