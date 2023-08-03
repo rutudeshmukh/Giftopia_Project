@@ -28,8 +28,7 @@ public class SecurityConfiguration {
         http.cors(Customizer.withDefaults());
 
         // + content negotiation strategy
-        http.setSharedObject(ContentNegotiationStrategy.class,
-                                new HeaderContentNegotiationStrategy());
+        http.setSharedObject(ContentNegotiationStrategy.class, new HeaderContentNegotiationStrategy());
 
         // + non-empty response body for 401 (more friendly)
         Okta.configureResourceServer401ResponseBody(http);
