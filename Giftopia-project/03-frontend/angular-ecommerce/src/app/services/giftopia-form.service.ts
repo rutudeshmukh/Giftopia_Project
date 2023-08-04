@@ -4,14 +4,15 @@ import { Observable, of } from 'rxjs'; //rxjs = reactive javascript
 import { Country } from '../common/country';
 import { map } from 'rxjs/operators';
 import { State } from '../common/state';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GiftopiaFormService {
 
-  private countriesUrl = 'http://localhost:8080/api/countries';
-  private statesUrl = 'http://localhost:8080/api/states';
+  private countriesUrl = environment.giftopiaApiUrl + '/countries';
+  private statesUrl = environment.giftopiaApiUrl +'/states';
   
   constructor(private httpClient: HttpClient) { }
 
