@@ -28,3 +28,12 @@ Mysql server
 postman
 Pagination template: https://ng-bootstrap.github.io/
 
+Test debit card :
+378282246310005
+
+Angular Language service -extension install
+Stripe api for payment (https://dashboard.stripe.com/register)
+Openssl/openid connect
+Okta security for login
+Oauth2
+
