@@ -31,9 +31,10 @@ Pagination template: https://ng-bootstrap.github.io/
 Video Link:
 https://www.loom.com/share/639f1dcf42914daaafb02f60766919b3?t=160&sid=5133b664-1bbb-40f4-8c09-5eb58074498e
 
-If link doesn't work:
+If link doesn't work go to:
 
-https://github.com/rutudeshmukh/Giftopia_Project/assets/69516019/67da3f99-2e04-4c17-8a55-e59c4937855e
+https://github.com/rutudeshmukh/Giftopia_Project/tree/master/Giftopia-project-release-2.0/00-starter-files
+
 
 
 
