@@ -1,11 +1,10 @@
-# Giftopia : Full-stack  E-commerce Project
+# Giftopia: Full-stack  E-commerce Project
+•	Developed a Full Stack E-commerce application with Angular front-end and Spring Boot back-end using REST APIs and MySQL database.
+•	Added features such as a product catalog, a user-friendly shopping cart, and a streamlined checkout process with integrated credit card payments with Stripe API.
+•	Added security using JWT, OAuth2, OpenID Connect, and SSL/TLS to add login/logout features using Okta, to protect access to sensitive data.
+•	Technology Used:  Java, Springboot, Typescript, MySQL, Bootstrap, Maven, Git, Postman
 
-
-Visual Studio Code
-Intellij IDEA
-POSTMAN
-MySQL Workbench
-MySQL Server
+Software used: Visual Studio Code, IntelliJ IDEA, POSTMAN, MySQL Workbench, Github
 
 Versions:
 • nvm 0.35.0
@@ -18,20 +17,12 @@ Versions:
 • Mysql 8.0
 
 Using below software/language/tools:
-Bootstrap : www.getbootstrap.com
-Angular
-Node
-Npm
-Lombok
-mySQLWorkBench
-Mysql server
-postman
-Pagination template: https://ng-bootstrap.github.io/
+Bootstrap(www.getbootstrap.com), Angular, Node, Npm, Lombok, MySQL WorkBench, Mysql server, postman, Pagination template: https://ng-bootstrap.github.io/
 
-Video Link:
+Application Video Link:
 https://www.loom.com/share/639f1dcf42914daaafb02f60766919b3?t=160&sid=5133b664-1bbb-40f4-8c09-5eb58074498e
 
-If link doesn't work go to:
+If the above link doesn't work go to:
 
 https://github.com/rutudeshmukh/Giftopia_Project/tree/master/Giftopia-project-release-2.0
 
