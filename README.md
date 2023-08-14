@@ -33,7 +33,7 @@ https://www.loom.com/share/639f1dcf42914daaafb02f60766919b3?t=160&sid=5133b664-1
 
 If link doesn't work go to:
 
-https://github.com/rutudeshmukh/Giftopia_Project/tree/master/Giftopia-project-release-2.0/00-starter-files
+https://github.com/rutudeshmukh/Giftopia_Project/tree/master/Giftopia-project-release-2.0
 
 
 
